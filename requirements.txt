@@ -1,5 +1,5 @@
 beautifulsoup4==4.5.1
-urllib.request==3.5
+urllib==3.5
 re==2.2.1
 nltk==3.2.1
 pandas==0.18.1
