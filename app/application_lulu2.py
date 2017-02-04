@@ -3,10 +3,8 @@ app_lulu = Flask(__name__)
 
 
 from bs4 import BeautifulSoup # For HTML parsing
-from urllib.request import urlopen# Website connections
+import requests
 import re # Regular expressions
-from time import sleep # To prevent overwhelming the server between connections
-from collections import Counter # Keep track of our term counts
 from nltk.corpus import stopwords # Filter out stopwords, such as 'the', 'or', 'and'
 import pandas as pd # For converting results to a dataframe and bar chart plots
 from scipy import spatial
@@ -26,7 +24,8 @@ def get_skills(website):
         Outputs: Cleaned text only
         '''
     try:
-        site = urlopen(website).read() # Connect to the job posting
+        session_requests=requests.session()
+        site=session_requests.get(website).content # Connect to the job posting
     except:
         return   # Need this in case the website isn't there anymore or some other weird connection problem
 
