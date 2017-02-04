@@ -1,7 +1,8 @@
 from flask import Flask,render_template,request,redirect
 app_lulu = Flask(__name__)
 
-
+import nltk
+nltk.download('stopwords')
 from bs4 import BeautifulSoup # For HTML parsing
 import requests
 import re # Regular expressions
