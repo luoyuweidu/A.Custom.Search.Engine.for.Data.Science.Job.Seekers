@@ -17,6 +17,8 @@ from bokeh.layouts import row
 from bokeh.plotting import figure, show, output_file
 from bokeh.models import ColumnDataSource, LabelSet
 from collections import Counter
+from bokeh.io import hplot, output_file, show
+from flask import Flask,render_template,request,redirect
 
 
 def get_skills(website):
@@ -131,9 +133,7 @@ def index_lulu():
         #request was a POST
         app_lulu.vars['post1'] = request.form['post1_lulu']
         app_lulu.vars['post2'] = request.form['post2_lulu']
-        app_lulu.vars['post3'] = request.form['post3_lulu']
-        app_lulu.vars['post4'] = request.form['post4_lulu']
-        app_lulu.vars['post5'] = request.form['post5_lulu']
+
         
         my_df2 = my_df().transpose()
         my_array = np.array((my_df2[my_df2[0]==1].index))
@@ -165,25 +165,26 @@ def index_lulu():
 
         dot.segment(0, factors, x, factors, line_width=5, line_color="green", )
         dot.circle(x, factors, size=15, fill_color="orange", line_color="green", line_width=3, )
-        script, div = components(dot)
+        
 
         p = figure(title = "Skills Matchness")
         p.xaxis.axis_label = 'Skills Required'
         p.yaxis.axis_label = 'Skills Have'
 
         p.circle(score_df["Skills_Required"], score_df["Skills_Have"],
-          fill_alpha=0.2, size=10)
+          fill_alpha=0.2, size=15)
 
         source = ColumnDataSource(score_df)
 
         labels = LabelSet(x="Skills_Required", y="Skills_Have", text="JobPost", y_offset=8,
-                  text_font_size="8pt", text_color="#555555",
+                  text_font_size="12pt", text_color="#555555",
                   source=source, text_align='center')
         p.add_layout(labels)
-        script2, div2 = components(p)
+        plot = hplot(dot,p)
+        script, div = components(plot)
 
 
-        return render_template('graph.html', script=script, div=div, div2=div2, num = JobPost_num)
+        return render_template('graph.html', script=script, div=div, num = JobPost_num.upper())
 
 
 

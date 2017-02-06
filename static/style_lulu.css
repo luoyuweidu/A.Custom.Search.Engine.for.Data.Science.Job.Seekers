@@ -1,11 +1,17 @@
-body            { font-family: sans-serif; background: #eee; }
-a, h1, h2       { color: #377BA8; }
-h1, h2          { font-family: 'Georgia', serif; margin: 0; }
-h1              { border-bottom: 2px solid #eee; }
+body            { font-family: sans-serif; background: #eee; 
+background: url("back.jpg") bottom center no-repeat;
+background-size: cover;
+height:100vh;
+}
+
+a, h1, h2       { color: #377BA8; font-size:20px;}
+h1, h2          { font-family: 'Georgia', serif; margin: 10px; }
+h1              { border-bottom: 2px solid #eee; margin-bottom: 20px; text-align: center;padding-bottom: 10px;}
 h2              { font-size: 1.2em; }
 
-.page           { margin: 2em auto; width: 35em; border: 5px solid #ccc;
-                  padding: 0.8em; background: white; }
+.page           { margin: 30vh auto 5vh; width: 35em; border: 10px solid #F08080;
+                  padding: 40px; background: white; opacity: 0.9;
+                  box-shadow: black 5px 5px 5px;}
 .entries        { list-style: none; margin: 0; padding: 0; }
 .entries li     { margin: 0.8em 1.2em; }
 .entries li h2  { margin-left: -1em; }
@@ -16,3 +22,25 @@ h2              { font-size: 1.2em; }
 .flash          { background: #CEE5F5; padding: 0.5em;
                   border: 1px solid #AACBE2; }
 .error          { background: #F0D6D6; padding: 0.5em; }
+
+
+div.instruction  {
+	text-align: center;
+	margin-top:30px;
+	color:black;
+	text-shadow: grey 5px 5px 5px;
+}
+
+
+#userinfoform_lulu > p:nth-child(3) > input:nth-child(1) {
+	background:  	#377BA8;
+	padding:4px 25px;
+	color: white;
+}
+
+
+#userinfoform_lulu > p:nth-child(3) > input:nth-child(1):hover {
+	background:  	#FF717E;
+	
+}
+
