@@ -114,7 +114,7 @@ def my_df():
 
 app_lulu.vars={}
 
-@app_lulu.route('/index',methods=['GET','POST'])
+@app_lulu.route('/',methods=['GET','POST'])
 def index():
     if request.method == 'GET':
         return render_template('userinfo_lulu.html')
