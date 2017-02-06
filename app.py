@@ -168,8 +168,8 @@ def index_lulu():
         
 
         p = figure(title = "Skills Matchness")
-        p.xaxis.axis_label = 'Skills Required'
-        p.yaxis.axis_label = 'Skills Have'
+        p.xaxis.axis_label = 'Num of Skills Required'
+        p.yaxis.axis_label = 'Num of Skills Have'
 
         p.circle(score_df["Skills_Required"], score_df["Skills_Have"],
           fill_alpha=0.2, size=15)
