@@ -1,6 +1,8 @@
 from flask import Flask,render_template,request,redirect
+
 app_lulu = Flask(__name__)
 
+#import package
 import nltk
 nltk.download('stopwords')
 from bs4 import BeautifulSoup # For HTML parsing
@@ -18,9 +20,9 @@ from bokeh.plotting import figure, show, output_file
 from bokeh.models import ColumnDataSource, LabelSet
 from collections import Counter
 from bokeh.io import hplot, output_file, show
-from flask import Flask,render_template,request,redirect
 
 
+#define a function that gets skills count of a job post
 def get_skills(website):
     '''
         This function just cleans up the raw html so that I can look at it.
@@ -42,36 +44,21 @@ def get_skills(website):
     for script in soup_obj(["script", "style"]):
         script.extract() # Remove these two elements from the BS4 object
 
-
-
     text = soup_obj.get_text() # Get the text from this
-
-
-
     lines = [line.strip() for line in text.splitlines()] # break into lines
-    
-    
-    
     chunks = [phrase.strip() for line in lines for phrase in line.split("  ")] # break multi-headlines into a line each
-    
-    
     text = ''.join(chunk for chunk in chunks if chunk).encode('utf-8') # Get rid of all blank lines and ends of line
     
     # Now clean out all of the unicode junk (this line works great!!!)
-    
     try:
         text = text.decode(encoding = 'utf-8') # Need this as some websites aren't formatted
     except:                                                            # in a way that this works, can occasionally throw
         return                                                         # an exception
 
-
     text = re.sub("[^a-zA-Z+3]"," ", text)  # Now get rid of any terms that aren't words (include 3 for d3.js)
     # Also include + for C++
     text = re.sub(r"([a-z])([A-Z])", r"\1 \2", text) # Fix spacing issue from merged words
-    
     text = text.lower().split()  # Go to lower case and split them apart
-    
-    
     stop_words = set(stopwords.words("english")) # Filter out any stop words
     text = [w for w in text if not w in stop_words]
     
@@ -79,6 +66,7 @@ def get_skills(website):
     # or not on the website)
     doc_frequency = Counter() # This will create a full counter of our terms.
     doc_frequency.update(text) # List comp
+    #create dictionaries indicating skill set
     prog_lang_dict = Counter({'R':doc_frequency['r'], 'Python':doc_frequency['python'],
                              'Java':doc_frequency['java'], 'C++':doc_frequency['c++'],
                              'Ruby':doc_frequency['ruby'],
@@ -105,6 +93,7 @@ def get_skills(website):
     post_df = pd.DataFrame(dict(post_skills),index = [0])
     return post_df
 
+#my skills set
 def my_df():
     my_dict = {'R':1, 'Python':1,
     'Java':0, 'C++':0,
@@ -165,7 +154,6 @@ def index_lulu():
 
         dot.segment(0, factors, x, factors, line_width=5, line_color="green", )
         dot.circle(x, factors, size=15, fill_color="orange", line_color="green", line_width=3, )
-        
 
         p = figure(title = "Skills Matchness")
         p.xaxis.axis_label = 'Num of Skills Required'
@@ -185,9 +173,6 @@ def index_lulu():
 
 
         return render_template('graph.html', script=script, div=div, num = JobPost_num.upper())
-
-
-
 
 if __name__ == "__main__":
     app_lulu.run(debug=True)
