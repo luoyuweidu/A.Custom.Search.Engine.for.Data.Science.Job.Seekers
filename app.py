@@ -213,7 +213,7 @@ def post_info(city = None, state =None):
     num_pages = total_num_jobs/10 #know the total number of time we attempt search result page
     
     rank = []
-    for i in range(1,5):#int(np.ceil(num_pages)+1)
+    for i in range(1,2):#int(np.ceil(num_pages)+1)
         print('Getting page',i)
         start_num = str(i*10)
         current_page = ''.join([final_site,'&start=',start_num])
