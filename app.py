@@ -33,10 +33,11 @@ from bokeh.plotting import figure, show, output_file
 from bokeh.models import ColumnDataSource, LabelSet
 from collections import Counter
 from bokeh.io import hplot, output_file, show
-import docx
+from docx import Document
 import re
 import math
 from time import sleep
+
 
 
 def getText(filename):
