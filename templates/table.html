@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    
+    
+    <title>W3.CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/lib/w3.css">
+            <body>
+                
+                <div align = "center">
+                    <h2>Your match!</h2>
+                    <p>Below shows Data Scientist Indeed job post order by relevancy to your skill set.</p>
+                    
+                    <table class="w3-table w3-striped w3-bordered w3-border w3-hoverable">
+                        <thead>
+                            <tr class="w3-light-grey">
+                                <th>Indeed Link</th>
+                                <th>Score</th>
+                            </tr>
+                        </thead>
+                        
+                      
+                      
+                            {% for page in pages %}
+                        <tr style = "line-height:30px">
+                            <td>
+                                <a href= {{page[0]}} target="_blank">{{page[0][1:50]}}</a>
+                            </td>
+                            <td>
+                              {{page[1]}}
+                            </td>
+                        </tr>
+                            {% endfor %}
+                        
+                        
+                        
+                    </table>
+                </div>
+                
+            </body>
+            
+            
+</html>
+
