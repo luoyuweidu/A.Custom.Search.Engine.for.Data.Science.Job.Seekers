@@ -41,7 +41,7 @@ from time import sleep
 
 
 def getText(filename):
-    doc = docx.Document(filename)
+    doc = Document(filename)
     fullText = []
     for para in doc.paragraphs:
         fullText.append(para.text)
