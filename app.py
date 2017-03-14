@@ -45,7 +45,7 @@ def getText(filename):
     fullText = []
     for para in doc.paragraphs:
         fullText.append(para.text)
-    
+
     resume = '\n'.join(fullText)
     lines = [line.strip() for line in resume.splitlines()]
     chunks = [re.split('; |, |\*|\(|\)|\:| ',line) for line in lines]
@@ -86,21 +86,21 @@ def get_skills(website):
         site=session_requests.get(website).content # Connect to the job posting
     except:
         return   # Need this in case the website isn't there anymore or some other weird connection problem
-    
+
     soup_obj = BeautifulSoup(site) # Get the html from the site
 
     if len(soup_obj) == 0: # In case the default parser lxml doesn't work, try another one
         soup_obj = BeautifulSoup(site, 'html5lib')
-    
-    
+
+
     for script in soup_obj(["script", "style"]):
         script.extract() # Remove these two elements from the BS4 object
-    
+
     text = soup_obj.get_text() # Get the text from this
     lines = [line.strip() for line in text.splitlines()] # break into lines
     chunks = [phrase.strip() for line in lines for phrase in line.split("  ")] # break multi-headlines into a line each
     text = ''.join(chunk for chunk in chunks if chunk).encode('utf-8') # Get rid of all blank lines and ends of line
-    
+
     # Now clean out all of the unicode junk (this line works great!!!)
     try:
         text = text.decode(encoding = 'utf-8') # Need this as some websites aren't formatted
@@ -128,13 +128,13 @@ def get_skills(website):
     analysis_tool_dict = Counter({'Excel':doc_frequency['excel'],  'Tableau':doc_frequency['tableau'],
                              'D3.js':doc_frequency['d3.js'], 'SAS':doc_frequency['sas'],
                              'SPSS':doc_frequency['spss'], 'D3':doc_frequency['d3']})
-    
+
     hadoop_dict = Counter({'Hadoop':doc_frequency['hadoop'], 'MapReduce':doc_frequency['mapreduce'],
                           'Spark':doc_frequency['spark'], 'Pig':doc_frequency['pig'],
                           'Hive':doc_frequency['hive'], 'Shark':doc_frequency['shark'],
                           'Oozie':doc_frequency['oozie'], 'ZooKeeper':doc_frequency['zookeeper'],
                           'Flume':doc_frequency['flume'], 'Mahout':doc_frequency['mahout']})
-        
+
     database_dict = Counter({'SQL':doc_frequency['sql'], 'NoSQL':doc_frequency['nosql'],
                                                   'HBase':doc_frequency['hbase'], 'Cassandra':doc_frequency['cassandra'],
                                                   'MongoDB':doc_frequency['mongodb']})
@@ -174,9 +174,9 @@ def upload():
 
 
 def post_info(city = None, state =None):
-    
+
     final_job = 'data+scientist'
-    
+
     if city is not None:
         final_city = city.split()
         final_city = '+'.join(word for word in final_city)
@@ -184,10 +184,10 @@ def post_info(city = None, state =None):
                            '%2C+', state] # Join all of our strings together so that indeed will search correctly
     else:
         final_site_list = ['http://www.indeed.com/jobs?q="', final_job, '"']
-    
+
     final_site = ''.join(final_site_list)
     base_url = 'http://www.indeed.com'
-    
+
     try:
         session_requests=requests.session()
         html =session_requests.get(final_site).content #open the job search page
@@ -200,7 +200,7 @@ def post_info(city = None, state =None):
 
     num_jobs_area = soup.find(id = 'searchCount').string.encode('utf-8')
     job_numbers = re.findall('\d+', str(num_jobs_area))
-    
+
     if len(job_numbers) > 3:#Have a total number of jobs greater than 1000?
         total_num_jobs = (int(job_numbers[2])*1000) + int(job_numbers[3])
     else:
@@ -209,9 +209,9 @@ def post_info(city = None, state =None):
     if city is None:
         city_title = 'Nationawide'
     print('There were', total_num_jobs, 'jobs found', city_title)
-    
+
     num_pages = total_num_jobs/10 #know the total number of time we attempt search result page
-    
+
     rank = []
     for i in range(1,2):#int(np.ceil(num_pages)+1)
         print('Getting page',i)
@@ -221,10 +221,10 @@ def post_info(city = None, state =None):
         html_page =session_requests.get(current_page).content #open the job search page
         page_obj = BeautifulSoup(html_page)
         job_link_area = page_obj.find(id = 'resultsCol') #Only the center area of the page
-        
+
         job_URLS = [base_url + str(link.get('href')) for link in job_link_area.findAll('a')]
         job_URLS = list(filter(lambda x: 'clk' in x, job_URLS))
-        
+
         for j in range(0, len(job_URLS)):
             final_description = get_skills(job_URLS[j])
             score = round(1 - spatial.distance.cosine(my_df,final_description),2)
@@ -233,14 +233,20 @@ def post_info(city = None, state =None):
             sleep(1)
     print('Done collecting job posts')
     rank = sorted(rank, key = lambda x: x[1], reverse = True)
-    
+
     return rank
     #for i in range(len(rank)):
     #print('Top', i+1,':', rank[i][0],'   score:', rank[i][1])
 
 
+from rq import Queue
+from worker import conn
 
+q = Queue(connection=conn)
 
+from utils import count_words_at_url
+
+result = q.enqueue(count_words_at_url, 'http://heroku.com')
 
 
 
@@ -255,7 +261,7 @@ def getlink():
         app_lulu.vars['city'] = request.form['City']
         app_lulu.vars['state'] = request.form['State']
         rank = post_info(app_lulu.vars['city'], app_lulu.vars['state'])
-        return render_template('table.html',pages = rank)
+        return render_template('table1.html',page = result)
 
 
 
