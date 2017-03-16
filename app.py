@@ -239,14 +239,7 @@ def post_info(city = None, state =None):
     #print('Top', i+1,':', rank[i][0],'   score:', rank[i][1])
 
 
-from rq import Queue
-from worker import conn
 
-q = Queue(connection=conn)
-
-from utils import count_words_at_url
-
-result = q.enqueue(count_words_at_url, 'http://heroku.com')
 
 
 
@@ -261,7 +254,7 @@ def getlink():
         app_lulu.vars['city'] = request.form['City']
         app_lulu.vars['state'] = request.form['State']
         rank = post_info(app_lulu.vars['city'], app_lulu.vars['state'])
-        return render_template('table1.html',page = result)
+        return render_template('table.html',pages = rank)
 
 
 
