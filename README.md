@@ -23,7 +23,11 @@ Steps I've taken to complete this project were:
 1. First, the app would ask you to upload a resume.
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
-Reference-style: 
+2. After uploading your resume, the website would ask you to enter the city and state you would like to look for a job in
+
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+3. After you submit, the app would take a while(1-3 mins) to fetch all the jobs back for you 
 
 
 ## Explanation for files
