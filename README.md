@@ -21,6 +21,7 @@ Steps I've taken to complete this project were:
 ## Instruction for user
 
 1. First, the app would ask you to upload a resume.
+![alt text][First]
 [First]: https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "First Page"
 
 
