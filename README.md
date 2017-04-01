@@ -21,13 +21,13 @@ Steps I've taken to complete this project were:
 ## Instruction for user
 
 1. First, the app would ask you to upload a resume.
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/luoyuweidu/App/blob/master/Picture/Screen%20Shot%202017-03-19%20at%2019.45.03.png "Logo Title Text 1")
 
 2. After uploading your resume, the website would ask you to enter the city and state you would like to look for a job in
 
-![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+![alt text](https://github.com/luoyuweidu/App/blob/master/Picture/Screen%20Shot%202017-03-19%20at%2019.49.38.png "Logo Title Text 1")
 
 3. After you submit, the app would take a while(1-3 mins) to fetch all the jobs back for you 
-
+![alt text](https://github.com/luoyuweidu/App/blob/master/Picture/Screen%20Shot%202017-03-19%20at%2019.54.14.png "Logo Title Text 1")
 
 ## Explanation for files
