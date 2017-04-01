@@ -11,7 +11,7 @@ Steps I'm taking to complete this project are:
 
 1. Scrap and analyze 2000+ job post on Indeed to extract popular skills required by employers. This step generates a set of key words that are lated used to perform hard skills match.
 2. Write python codes that can takes one resume and parse them into key words.
-3. Write a Python scaper that automatically scape all the posts related to Data Analyst position on Indeed. Use the same text parsing process in step 2 to generate a set of key words for every post.
+3. Write a Python scaper that automatically scape all the posts related to Data Scientist position on Indeed. Use the same text parsing process in step 2 to generate a set of key words for every post.
 4. Calculate the degree of match between the set of key words from resume and key words from each post. A score is generated to represent the degree of match. The higher the better.
 5. Display all the links ordered by the scores of match so that we can apply the most match at first!
 6. Create html element and deploy the app on heroku.
