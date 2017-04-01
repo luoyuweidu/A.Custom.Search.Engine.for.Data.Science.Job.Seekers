@@ -3,16 +3,16 @@ Please click the link to access to the app
 https://thawing-tundra-10605.herokuapp.com/
 
 ## Introduction
-Now that I am looking for analytics full-time job, I spend a lot of time searching and looking at online job posts on job boards like LinkedIn and Indeed. But I noticed that the responsibilities of Data Analyst vary greatly one from another, and only a small portion of jobs I would consider good matches for my skills. I had the idea of creating a custom search engine that matches my resume with online job posts automatically so that I apply from the top match if I only have limited time.
+Now that I am looking for an analytics full-time job, I spend a lot of time searching and looking at online job posts on job boards like LinkedIn and Indeed. But I noticed that the responsibilities of Data Analyst vary greatly one from another, and only a small portion of jobs I would consider good matches for my skills. Then I had the idea of creating a custom search engine that matches my resume with online job posts automatically so that I apply from the top match if I  have limited time.
 
 I'm new to the website scraping and app development, so I am learning as I go :)
 
-Steps I've taken to complete this project were:
+Steps I'm taking to complete this project are:
 
-1. Scraped and analyzed 2000+ job post on Indeed to extract popular skills required by employers. This step generated a set of key words that were lated used to perform hard skills match.
-2. Wrote python codes that can takes one resume and parse them into key words.
-3. Wrote a Python scaper that automatically scape all the posts related to Data Analyst position on Indeed. Use the same text parsing process to generate a set of key words for every posts.
-4. Calculated the degree of match between the set of key words from resume and key words from each post. A score is generated to represent the degree of match. The higher the better.
+1. Scrap and analyze 2000+ job post on Indeed to extract popular skills required by employers. This step generates a set of key words that are lated used to perform hard skills match.
+2. Write python codes that can takes one resume and parse them into key words.
+3. Write a Python scaper that automatically scape all the posts related to Data Analyst position on Indeed. Use the same text parsing process in step 2 to generate a set of key words for every post.
+4. Calculate the degree of match between the set of key words from resume and key words from each post. A score is generated to represent the degree of match. The higher the better.
 5. Display all the links ordered by the scores of match so that we can apply the most match at first!
 6. Create html element and deploy the app on heroku.
 
