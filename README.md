@@ -27,7 +27,7 @@ Steps I'm taking to complete this project are:
 
 ![alt text](https://github.com/luoyuweidu/App/blob/master/Picture/Screen%20Shot%202017-03-31%20at%2022.08.28.png "Logo Title Text 1")
 
-3. After you submit, the app would take a while(1-3 mins) to fetch all the jobs back for you 
+3. After you submit, the app would take a while(15-20 seconds) to fetch all the jobs back for you 
 ![alt text](https://github.com/luoyuweidu/App/blob/master/Picture/Screen%20Shot%202017-03-31%20at%2022.09.14.png "Logo Title Text 1")
 
 ## Explanation for files
