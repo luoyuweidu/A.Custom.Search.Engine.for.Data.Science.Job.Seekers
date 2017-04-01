@@ -9,9 +9,8 @@ h1, h2          { font-family: 'Georgia', serif; margin: 10px; }
 h1              { border-bottom: 2px solid #eee; margin-bottom: 20px; text-align: center;padding-bottom: 10px;}
 h2              { font-size: 1.2em; }
 
-.page           { margin: 30vh auto 5vh; width: 35em; border: 10px solid #F08080;
-                  padding: 40px; background: white; opacity: 0.9;
-                  box-shadow: black 5px 5px 5px;}
+.page           { margin: 30vh auto 5vh; width: 35em; border: none;
+                  padding: 40px; background: white; opacity: 0.9}
 .entries        { list-style: none; margin: 0; padding: 0; }
 .entries li     { margin: 0.8em 1.2em; }
 .entries li h2  { margin-left: -1em; }
@@ -20,7 +19,7 @@ h2              { font-size: 1.2em; }
 .metanav        { text-align: right; font-size: 0.8em; padding: 0.3em;
                   margin-bottom: 1em; background: #fafafa; }
 .flash          { background: #CEE5F5; padding: 0.5em;
-                  border: 1px solid #AACBE2; }
+                  border: none; }
 .error          { background: #F0D6D6; padding: 0.5em; }
 
 
