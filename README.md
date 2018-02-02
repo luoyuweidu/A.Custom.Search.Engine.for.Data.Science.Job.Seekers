@@ -3,7 +3,7 @@ Please click the link to access to the app
 https://thawing-tundra-10605.herokuapp.com/
 
 ## Introduction
-Now that I am looking for an analytics full-time job, I spend a lot of time searching and looking at online job posts on job boards like LinkedIn and Indeed. But I noticed that the responsibilities of Data Analyst vary greatly one from another, and only a small portion of jobs I would consider good matches for my skills. Then I had the idea of creating a custom search engine that matches my resume with online job posts automatically so that I apply from the top match if I  have limited time.
+Now that I am looking for an analytics full-time job, I spend a lot of time searching and looking at online job posts on job boards like LinkedIn and Indeed. But I noticed that the job responsibilities of Data Analyst vary greatly from one post to another, and only a small portion of jobs I would consider good matches for my skills. Then I had the idea of creating a custom search engine that matches my resume with online job posts automatically so that I apply from the top match if I  have limited time.
 
 I'm new to the website scraping and app development, so I am learning as I go :)
 
