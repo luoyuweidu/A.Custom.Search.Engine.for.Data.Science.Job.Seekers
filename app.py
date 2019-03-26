@@ -32,7 +32,6 @@ from bokeh.layouts import row
 from bokeh.plotting import figure, show, output_file
 from bokeh.models import ColumnDataSource, LabelSet
 from collections import Counter
-from bokeh.io import hplot, output_file, show
 from docx import Document
 import re
 import math
@@ -201,16 +200,13 @@ def post_info(city = None, state =None):
     num_jobs_area = soup.find(id = 'searchCount').string.encode('utf-8')
     job_numbers = re.findall('\d+', str(num_jobs_area))
 
-    if len(job_numbers) > 3:#Have a total number of jobs greater than 1000?
-        total_num_jobs = (int(job_numbers[2])*1000) + int(job_numbers[3])
-    else:
-        total_num_jobs = int(job_numbers[2])
+    total_num_jobs = job_numbers[1]
     city_title = city
     if city is None:
         city_title = 'Nationawide'
     print('There were', total_num_jobs, 'jobs found', city_title)
 
-    num_pages = total_num_jobs/10 #know the total number of time we attempt search result page
+    num_pages = int(total_num_jobs)/10 #know the total number of time we attempt search result page
 
     rank = []
     for i in range(1,2):#int(np.ceil(num_pages)+1)
@@ -237,9 +233,6 @@ def post_info(city = None, state =None):
     return rank
     #for i in range(len(rank)):
     #print('Top', i+1,':', rank[i][0],'   score:', rank[i][1])
-
-
-
 
 
 
