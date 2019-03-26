@@ -27,7 +27,6 @@ from scipy import spatial
 from bokeh.layouts import row
 from bokeh.plotting import figure, show, output_file
 from bokeh.embed import components
-import numpy as np
 from bokeh.layouts import row
 from bokeh.plotting import figure, show, output_file
 from bokeh.models import ColumnDataSource, LabelSet
