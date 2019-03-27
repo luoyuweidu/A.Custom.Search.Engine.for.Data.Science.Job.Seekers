@@ -24,12 +24,12 @@ import re # Regular expressions
 from nltk.corpus import stopwords # Filter out stopwords, such as 'the', 'or', 'and'
 import pandas as pd # For converting results to a dataframe and bar chart plots
 from scipy import spatial
-from bokeh.layouts import row
-from bokeh.plotting import figure, show, output_file
-from bokeh.embed import components
-from bokeh.layouts import row
-from bokeh.plotting import figure, show, output_file
-from bokeh.models import ColumnDataSource, LabelSet
+# from bokeh.layouts import row
+# from bokeh.plotting import figure, show, output_file
+# from bokeh.embed import components
+# from bokeh.layouts import row
+# from bokeh.plotting import figure, show, output_file
+# from bokeh.models import ColumnDataSource, LabelSet
 from collections import Counter
 from docx import Document
 import re
