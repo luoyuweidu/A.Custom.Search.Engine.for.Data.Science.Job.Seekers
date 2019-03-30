@@ -166,6 +166,7 @@ def upload():
         # will basicaly show on the browser the uploaded file
         global my_df
         my_df = getText(os.path.join(app_lulu.config['UPLOAD_FOLDER'], filename))
+        print(type(my_df))
         return redirect(url_for('getlink')) #redirect to website where getlink gets executed
 
 
